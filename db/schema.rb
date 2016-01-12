@@ -17,12 +17,13 @@ ActiveRecord::Schema.define(version: 20160111195649) do
   enable_extension "plpgsql"
 
   create_table "broker_profiles", force: :cascade do |t|
-    t.string   "company_name"
     t.string   "area_of_service"
+    t.string   "company_name"
     t.string   "contact_name"
     t.string   "contact_address"
     t.string   "contact_phone"
-    t.integer  "iata_code"
+    t.string   "iata_code"
+    t.integer  "year_in_service"
     t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

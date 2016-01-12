@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_one :broker_profile
-  # accepts_nested_attributes_for :broker_profile
+  accepts_nested_attributes_for :broker_profile
   rolify
 
   # after_create :build_profile
