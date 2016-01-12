@@ -7,6 +7,7 @@ devise_for :users, :controllers => {:registrations => "registrations"}
 
   # You can have the root of your site routed with "root"
    root 'dashboard#index'
+   resources :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

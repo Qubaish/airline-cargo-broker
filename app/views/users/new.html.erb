@@ -1,0 +1,46 @@
+<%= form_for :user, url: {action: "create"} do |f| %>
+    <div class="field">
+        <%= f.label :email %><br />
+        <%= f.text_field :email %>
+    </div>
+    <div class="field">
+    <%= f.label :password, "New password" %><br />
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirm new password" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+   
+    
+    <%= f.fields_for :airplanes do |ff| %>
+    <div class="field">
+        <%= ff.label :company_name %><br />
+        <%= ff.text_field :company_name %>
+    </div>
+    <div class="field">
+        <%= ff.label :area_of_service %><br />
+        <%= ff.text_field :area_of_service %>
+    </div>
+    <div class="field">
+        <%= ff.label :contact_name %><br />
+        <%= ff.text_field :contact_name %>
+    </div>
+     <div class="field">
+        <%= ff.label :contact_address %><br />
+        <%= ff.text_field :contact_address %>
+    </div>
+    <div class="field">
+        <%= ff.label :contact_phone %><br />
+        <%= ff.text_field :contact_phone %>
+    </div>
+<div class="actions">
+        <%= f.submit 'create airline' %>
+    </div>
+        
+    <% end %>
+  <% end %>
