@@ -20,9 +20,10 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
-  <%= fields_for :broker_profile, @user.broker_profile do |broker| %>
-    Name  : <%= broker.text_field :contact_name %>
+<!--   <%= 
+  f.select :role_ids,options_from_collection_for_select(Role.all.first(3),"id","name","Admin"), :class => "form-control" %> -->
+  <%= f.fields_for :broker_profile do |broker| %>
+  Name  : <%= broker.text_field :contact_name %>
   <% end %>
 
   <div class="actions">
