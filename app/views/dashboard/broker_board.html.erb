@@ -1,3 +1,26 @@
 <div class="container">
 <h1>Broker World</h1>
+<%= link_to "Request for a Quote",  new_broker_quote_path%>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+        <tr>
+            <th>From Airpot</th>
+            <th>To Airpot</th>
+            <th>Nature Of Cargo</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @broker_data.each do |data| %>
+      <tr>
+        <td><%= data.from_airpot%></td>
+        <td><%= data.to_airpot%></td>
+        <td><%= data.nature_of_cargo%></td>
+        <td><button class="btn btn-sm btn-danger">Delete</button></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 </div>  

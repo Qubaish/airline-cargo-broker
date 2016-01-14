@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
 
 
-devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
    root 'dashboard#index'
    resources :users
+   resources :broker_quotes
 
 
   # Example of regular route:
