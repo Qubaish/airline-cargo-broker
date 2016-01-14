@@ -8,7 +8,8 @@ devise_for :users, :controllers => {:registrations => "registrations"}
   # You can have the root of your site routed with "root"
    root 'dashboard#index'
    resources :users
-
+  
+ match "/sign_up_as_airplan" => "users#sign_up_as_airplan", :via => [:get, :post]
 
   # Example of regular route:
     get 'broker_board' => 'dashboard#broker_board'
