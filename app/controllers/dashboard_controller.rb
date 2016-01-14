@@ -4,12 +4,16 @@ class DashboardController < ApplicationController
   def index
     if current_user.has_role? :broker
       redirect_to broker_board_url      
-    else
+    elsif current_user.has_role? :airplane
+      redirect_to airplane_board_url
     end
   end
 
   def broker_board
    @broker_data =  broker.broker_quotes
+  end
+
+  def airplane_board
   end
 
   private

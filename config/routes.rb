@@ -12,10 +12,10 @@ Rails.application.routes.draw do
    root 'dashboard#index'
    resources :users
    resources :broker_quotes
-
-
+   match "/sign_up_as_airplan" => "users#sign_up_as_airplan", :via => [:get, :post]
   # Example of regular route:
     get 'broker_board' => 'dashboard#broker_board'
+    get 'airplane_board' => 'dashboard#airplane_board'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
