@@ -14,6 +14,7 @@ class DashboardController < ApplicationController
   end
 
   def airplane_board
+   @all_quotes = BrokerQuote.all
   end
 
   private

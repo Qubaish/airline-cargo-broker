@@ -1,46 +1,85 @@
+<div class="container">
+  <h2>Airplan Sign Up</h2>
+  <%#= devise_error_messages! %>
 <%= form_for :user,:html => { :id => "user" }, :url => {:controller => "users", :action => "sign_up_as_airplan" } do |f| %>
-    <div class="field">
-        <%= f.label :email %><br />
-        <%= f.text_field :email %>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <%= f.text_field :email, :pattern=> "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$",class: "form-control",:required=> true %>
     </div>
-    <div class="field">
-    <%= f.label :password, "New password" %><br />
+    </div>
+  <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10"> 
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off", class: "form-control" %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+</div>
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password Confirmation:</label>
+      <div class="col-sm-10">
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+  </div>
   </div>
    
     
     <%= f.fields_for :airplanes do |ff| %>
-    <div class="field">
-        <%= ff.label :company_name %><br />
-        <%= ff.text_field :company_name %>
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Company Name:</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :company_name, class: "form-control" %>
     </div>
-    <div class="field">
-        <%= ff.label :area_of_service %><br />
-        <%= ff.text_field :area_of_service %>
     </div>
-    <div class="field">
-        <%= ff.label :contact_name %><br />
-        <%= ff.text_field :contact_name %>
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Area of Service:</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :area_of_service, class: "form-control" %>
     </div>
-     <div class="field">
-        <%= ff.label :contact_address %><br />
-        <%= ff.text_field :contact_address %>
     </div>
-    <div class="field">
-        <%= ff.label :contact_phone %><br />
-        <%= ff.text_field :contact_phone %>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Contact Person Name:</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :contact_name , class: "form-control"%>
     </div>
-<div class="actions">
-        <%= f.submit 'create airline' %>
+    </div>
+  <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Contact Person Address:</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :contact_address , class: "form-control" %>
+    </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Contact Person Phone:</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :contact_phone, class: "form-control" %>
+    </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Area of service</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :area_of_service, class: "form-control" %>
+    </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">IATA Code:</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :iata_code, class: "form-control" %>
+    </div>
+    </div>
+     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">CAA Licence:</label>
+      <div class="col-sm-10">
+        <%= ff.text_field :caa_licence, class: "form-control" %>
+    </div>
+    </div>
+<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit 'create airline', class: "btn btn-default" %>
+    </div>
     </div>
         
     <% end %>
   <% end %>
+  </div>

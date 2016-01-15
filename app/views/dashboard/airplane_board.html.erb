@@ -1,3 +1,28 @@
 <div class="container">
-<h1>Airplane World</h1>
+<h1>Load Board</h1>
+<%#= link_to "Request for a Quote",  new_broker_quote_path%>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+        <tr>
+            <th>From Airpot</th>
+            <th>To Airpot</th>
+            <th>Nature Of Cargo</th>
+            <th>Contact With Broker</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+      <% @all_quotes.each do |data| %>
+      <tr>
+        <td><%= data.from_airpot%></td>
+        <td><%= data.to_airpot%></td>
+        <td><%= data.nature_of_cargo%></td>
+         <td><button class="btn btn-sm btn-danger">Contact</button></td>
+        <td><button class="btn btn-sm btn-danger">Bid for this</button></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
+</div>  
