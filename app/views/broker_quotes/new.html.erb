@@ -4,20 +4,22 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">From Airpot:</label>
       <div class="col-sm-10">
-       <%= f.text_field :from_airpot, class: "form-control" %>
+       <%= f.text_field :from_airpot, class: "form-control", required: true%>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">To Airpot:</label>
       <div class="col-sm-10">
-       <%= f.text_field :to_airpot, class: "form-control" %>
+       <%= f.text_field :to_airpot, class: "form-control", required: true %>
       </div>
     </div>
+  
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Date Required:</label>
-      <div class="col-sm-10">
+      <label class="control-label" for="email">Date Required:</label>
+      <div class="input-group date col-md-3" id="datetimepicker1">
        <%= f.text_field :date_required, class: "form-control" %>
-      </div>
+       <span class="input-group-addon"></span>
+            </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Nature of Cargo:</label>
@@ -66,3 +68,8 @@
 <% end %>
 
 </div>
+
+<script type="text/javascript">
+  $("#new_broker_quote").validate();
+  $('#datetimepicker1').datetimepicker();
+</script>
