@@ -14,6 +14,7 @@ gem 'devise'
 gem 'authority'
 gem 'rolify'
 gem 'execjs'
+gem 'country_select'
 
 gem 'therubyracer'
 # See https://github.com/rails/execjs#readme for more supported runtimes
