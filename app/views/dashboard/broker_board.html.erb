@@ -5,18 +5,31 @@
   <table class="table">
     <thead>
         <tr>
-            <th>From Airpot</th>
-            <th>To Airpot</th>
-            <th>Nature Of Cargo</th>
-            <th>Action</th>
+          <th>Date</th>
+          <th>Broker</th>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Date Requested</th>
+          <th>Size</th>
+          <th>Weight</th>
+          <th>Type Of Cargo</th>
+          <th>Special Requirement</th>
+          <th>Action</th>
         </tr>
     </thead>
     <tbody>
       <% @broker_data.each do |data| %>
       <tr>
+        <td><%= data.created_at.strftime("%B %d %Y")%></td>
+
+        <td><%= link_to data.name, broker_quote_path(data.id)%></td>
         <td><%= data.from_airpot%></td>
         <td><%= data.to_airpot%></td>
+        <td><%= data.date_required.strftime("%B %d %Y") if data.date_required.present?%></td>
+        <td>L<%= data.cargo_dimension_length%> W <%= data.cargo_dimension_width%> H <%= data.cargo_dimension_height%> </td>
+        <td><%= data.payload%></td>
         <td><%= data.nature_of_cargo%></td>
+        <td><%= data.special_requirements%></td>
         <td><button class="btn btn-sm btn-danger">Delete</button></td>
       </tr>
       <% end %>

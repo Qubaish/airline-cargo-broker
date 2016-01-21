@@ -14,6 +14,10 @@ class BrokerQuotesController < ApplicationController
     end
   end
 
+  def show
+    @broker = BrokerQuote.find(params[:id])
+  end
+
   private
 
   def broker_quote_params
