@@ -26,7 +26,6 @@ class AirlinesController < ApplicationController
   # POST /airlines
   # POST /airlines.json
   def create
-    debugger
     @airline = Airline.new(airline_params)
     
     respond_to do |format|
