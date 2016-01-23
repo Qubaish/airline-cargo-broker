@@ -17,6 +17,7 @@ gem 'execjs'
 gem 'country_select'
 
 gem 'therubyracer'
+gem 'exception_notification'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
