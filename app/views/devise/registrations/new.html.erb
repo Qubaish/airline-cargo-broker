@@ -5,7 +5,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Email:</label>
       <div class="col-sm-10">
-       <%= f.email_field :email, autofocus: true, class: "form-control" %>
+       <%= f.email_field :email, autofocus: true, class: "form-control", required: true%>
       </div>
     </div>
     <div class="form-group">
@@ -28,31 +28,43 @@
      <div class="form-group">
       <label class="control-label col-sm-2" for="email">Company Name:</label>
       <div class="col-sm-10">
-        <%= broker.text_field :company_name, class: "form-control" %>
+        <%= broker.text_field :company_name, class: "form-control", required: true %>
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Contact Name:</label>
+      <label class="control-label col-sm-2" for="email">Name:</label>
       <div class="col-sm-10">
-        <%= broker.text_field :contact_name, class: "form-control" %>
+        <%= broker.text_field :contact_name, class: "form-control", required: true %>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Area Of Service:</label>
       <div class="col-sm-10">
-        <%= broker.text_field :area_of_service, class: "form-control" %>
+        <%= broker.text_field :area_of_service, class: "form-control", required: true %>
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Contact Address:</label>
+      <label class="control-label col-sm-2" for="email">Address:</label>
       <div class="col-sm-10">
-        <%= broker.text_field :contact_address, class: "form-control" %>
+        <%= broker.text_field :contact_address, class: "form-control", required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Zip:</label>
+      <div class="col-sm-10">
+        <%= broker.text_field :zip, class: "form-control", required: true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Country:</label>
+      <div class="col-sm-10">
+      <%= country_select("broker_profile", "country", include_blank: true) %>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Contact Phone:</label>
       <div class="col-sm-10">
-        <%= broker.text_field :contact_phone, class: "form-control" %>
+        <%= broker.text_field :contact_phone, class: "form-control", required: true %>
       </div>
     </div>
      <div class="form-group">
@@ -64,7 +76,7 @@
       <div class="form-group">
       <label class="control-label col-sm-2" for="email">Year In Service:</label>
       <div class="col-sm-10">
-        <%= broker.text_field :year_in_service, class: "form-control" %>
+        <%= broker.text_field :year_in_service, class: "form-control", required: true %>
       </div>
     </div>
       <% end %>
@@ -79,3 +91,28 @@
 </div>
 
 <%= render "devise/shared/links" %>
+
+<script type="text/javascript">
+
+ jQuery.validator.addMethod("lettersonly", function(value, element) {
+    return this.optional(element) || /^[a-z]+$/i.test(value);
+  }, "Letters only please"); 
+
+  $.validator.addMethod("lettersNumbersOnly", function(value, element) {
+    return this.optional(element) || /^[a-z0-9\-\s]+$/i.test(value);
+  }, "Username must contain only letters, numbers, or dashes.");
+
+  $("#new_user").validate({
+     rules: {
+      "user[broker_profile_attributes][contact_name]": { lettersonly: true},
+      "user[broker_profile_attributes][company_name]" : {lettersNumbersOnly: true},
+      "user[email]" : {email: true},
+      "user[broker_profile_attributes][contact_phone]" : {digits: true},
+      "user[broker_profile_attributes][area_of_service]" : {lettersonly: true},
+      "user[broker_profile_attributes][contact_address]" : {lettersNumbersOnly :true},
+      "user[broker_profile_attributes][zip]" : {digits :true},
+      "user[broker_profile_attributes][year_in_service]" : {digits :true}
+    }
+    });
+
+</script>

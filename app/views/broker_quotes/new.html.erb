@@ -2,22 +2,54 @@
     <h2>Broker Quote</h2>
     <%= form_for @quote, url: {action: "create"}, html: {class: "form-horizontal"} do |f| %>
     <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Name:</label>
+      <div class="col-sm-10">
+       <%= f.text_field :name, class: "form-control", required: true%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Company Name:</label>
+      <div class="col-sm-10">
+       <%= f.text_field :company_name, class: "form-control", required: true%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+       <%= f.text_field :email, class: "form-control", required: true%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Phone:</label>
+      <div class="col-sm-10">
+       <%= f.text_field :phone_number, class: "form-control", required: true%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">UAN Number:</label>
+      <div class="col-sm-10">
+       <%= f.text_field :uan_number, class: "form-control"%>
+      </div>
+    </div>
+    <div class="form-group">
       <label class="control-label col-sm-2" for="email">From Airpot:</label>
       <div class="col-sm-10">
-       <%= f.text_field :from_airpot, class: "form-control" %>
+       <%= f.text_field :from_airpot, class: "form-control", required: true%>
       </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">To Airpot:</label>
       <div class="col-sm-10">
-       <%= f.text_field :to_airpot, class: "form-control" %>
+       <%= f.text_field :to_airpot, class: "form-control", required: true %>
       </div>
     </div>
+  
     <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Date Required:</label>
-      <div class="col-sm-10">
+      <label class="control-label" for="email">Date Required:</label>
+      <div class="input-group date col-md-3" id="datetimepicker1">
        <%= f.text_field :date_required, class: "form-control" %>
-      </div>
+       <span class="input-group-addon"></span>
+            </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="email">Nature of Cargo:</label>
@@ -43,7 +75,7 @@
        <%= f.text_field :volume, class: "form-control" %>
      </div>
    </div>
-
+   <h3>Frieght Information</h3>
    <div class="form-group">
       <label class="control-label col-sm-2" for="email">Cargo Dimensions (width, height, length) in CMs:</label>
       <div class="col-sm-10">
@@ -58,6 +90,27 @@
      <%= f.text_field :quantiy, class: "form-control" %>
    </div>
  </div>
+
+   <div class="form-group">
+    <label class="control-label col-sm-2" for="email">How did you hear from cargo exchange:</label>
+    <div class="col-sm-10">
+     <%= f.text_field :hear, class: "form-control" %>
+   </div>
+ </div>
+ <br>
+ <br>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Additional Information:</label>
+    <div class="col-sm-10">
+     <%= f.text_field :additional_information, class: "form-control" %>
+   </div>
+ </div>
+ <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Special Requirements:</label>
+    <div class="col-sm-10">
+     <%= f.text_field :special_requirements, class: "form-control" %>
+   </div>
+ </div>
      <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <%= f.submit "Add Quote", class: "btn btn-primary"%>
@@ -66,3 +119,28 @@
 <% end %>
 
 </div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  jQuery.validator.addMethod("lettersonly", function(value, element) {
+    return this.optional(element) || /^[a-z]+$/i.test(value);
+  }, "Letters only please"); 
+
+  $.validator.addMethod("lettersNumbersOnly", function(value, element) {
+    return this.optional(element) || /^[a-z0-9\-\s]+$/i.test(value);
+  }, "Username must contain only letters, numbers, or dashes.");
+
+  $("#new_broker_quote").validate({
+     rules: {
+      "broker_quote[name]": { lettersonly: true},
+      "broker_quote[company_name]" : {lettersNumbersOnly: true},
+      "broker_quote[email]" : {email: true},
+      "broker_quote[phone_number]" : {digits: true},
+      "broker_quote[from_airpot]" : {lettersonly: true},
+      "broker_quote[to_airpot]" : {lettersonly :true}
+    }
+    });
+
+  $('#datetimepicker1').datetimepicker();
+});
+</script>
