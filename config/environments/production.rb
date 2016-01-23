@@ -92,5 +92,11 @@ config.action_mailer.default_url_options = { :host => 'air-cargo-exchange.heroku
       :authentication       => :plain,
       :enable_starttls_auto => true
 }
+Rails.application.config.middleware.use ExceptionNotification::Rack,
+  :email => {
+    :email_prefix => "[Error] ",
+    :sender_address => %{"Exception Notification" <admin@cargo.com>},
+    :exception_recipients => %w{shoaib@gems.techverx.com qubaish@gems.techverx.com}
+  }
   
 end
