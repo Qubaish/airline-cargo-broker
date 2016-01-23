@@ -5,11 +5,10 @@ class UsersController < ApplicationController
   end
   def new
   	@user = User.new
-  	1.times{ @user.airplanes.build }
+  	#1.times{ @user.airplanes.build }
   	
   end
   def create
-  	debugger
   end
   def sign_up_as_airplan
     @user = User.new(:email=>params[:user][:email],:password=>params[:user][:password] )
