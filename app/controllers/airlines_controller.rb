@@ -44,8 +44,6 @@ class AirlinesController < ApplicationController
   # PATCH/PUT /airlines/1
   # PATCH/PUT /airlines/1.json
   def update
-    debugger
-    return
     respond_to do |format|
       if @airline.update(airline_params)
         format.html { redirect_to @airline, notice: 'Airline was successfully updated.' }
@@ -75,7 +73,7 @@ class AirlinesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def airline_params
-      params.require(:airline).permit( :airline_name,  user_attributes: [:email] )
+      #params.require(:airline).permit( :airline_name,  user_attributes: [:email] )
       params.require(:airline).permit(:airline_name,:airline_address,:country,:contact_person_name,:contact_person_address,:contact_person_email,:contact_number,:iata_code,:caa_license,:user_id,:year_in_service, :user_attributes=> [:email,:password,:password_confirmation])
     end
 end

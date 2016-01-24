@@ -1,10 +1,13 @@
 <div class="container">
-<h1>Load Board</h1>
+<a href="airline_boards/new" class="btn btn-info"style = "align:left" role="button">Request a Load</a>
+<h1>Dash Board</h1>
 <%#= link_to "Request for a Quote",  new_broker_quote_path%>
 <div class="table-responsive">
   <table class="table">
     <thead>
         <tr>
+            <th>Date</th>
+            <th>Broker</th>
             <th>From Airpot</th>
             <th>To Airpot</th>
             <th>Nature Of Cargo</th>
@@ -15,6 +18,8 @@
     <tbody>
       <% @all_quotes.each do |data| %>
       <tr>
+        <td><%= data.created_at.strftime("%a %b %Y")%></td>
+        <td><%= data.user.broker_profile.company_name%></td>
         <td><%= data.from_airpot%></td>
         <td><%= data.to_airpot%></td>
         <td><%= data.nature_of_cargo%></td>
