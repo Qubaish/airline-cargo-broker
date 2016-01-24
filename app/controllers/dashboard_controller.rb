@@ -10,7 +10,11 @@ class DashboardController < ApplicationController
   end
 
   def broker_board
-   @broker_data =  broker.broker_quotes
+    if params[:search]
+      check_search_type
+    else
+      @broker_data =  broker.broker_quotes
+    end
   end
 
   def airplane_board
@@ -20,6 +24,30 @@ class DashboardController < ApplicationController
 
   def broker
     broker = current_user
+  end
+
+  def check_search_type
+    type = params[:search]
+    if type == "Origin Destination"
+      if params[:post][:origin].present?
+        @broker_data = BrokerQuote.search_by_origin_destination("#{params[:post][:origin]} #{params[:post][:destination]}")
+      else
+        @broker_data = BrokerQuote.all
+      end
+    elsif type = "Date"
+       if params[:post][:q].present?
+       date = params[:post][:q].to_date.strftime("%Y-%d-%m")
+       @broker_data = BrokerQuote.search(date)
+     else
+        @broker_data = BrokerQuote.all
+     end
+    else
+      if params[:post][:q].present?
+        @broker_data = BrokerQuote.search(params[:post][:q])
+      else
+        @broker_data = BrokerQuote.all
+      end
+    end
   end
 
 end

@@ -18,6 +18,15 @@ class BrokerQuotesController < ApplicationController
     @broker = BrokerQuote.find(params[:id])
   end
 
+  def search_by_broker
+    if params[:post][:q].present?
+      @broker_data = BrokerQuote.search_by_title(params[:post][:q])
+    else
+      @broker_data = BrokerQuote.all
+    end
+    render "dashboard/broker_board"
+  end
+
   private
 
   def broker_quote_params
