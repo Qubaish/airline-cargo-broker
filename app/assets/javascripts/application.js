@@ -18,3 +18,4 @@
 //= require bootstrap.min
 //= require bootstrap-datetimepicker.min
 //= require jquery.validate.min
+//= require loder

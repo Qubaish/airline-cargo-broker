@@ -1,0 +1,21 @@
+     <header class="header">
+         <div class="top_header">
+            <div class="container">
+               <div class="logo">
+               <a href=<%= root_url %>>
+                  <img src="/assets/logo.png" class="img-responsive">
+               </a>
+               </div>
+               <div class="right_nav">
+                  <ul class="list-unstyled">
+                     <li><a href="#"><img src="/assets/icon1.png" class="img-responsive"></a></li>
+                     <li><a href="#"><img src="/assets/icon2.png" class="img-responsive"></a></li>
+                     <li><a href="#"><img src="/assets/icon3.png" class="img-responsive"></a></li>
+                     <li><a href="#"><img src="/assets/icon4.png" class="img-responsive"></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+         <%= render partial: "layouts/banner" if @banner_nav%>
+         <!-- End banner -->
+      </header>
