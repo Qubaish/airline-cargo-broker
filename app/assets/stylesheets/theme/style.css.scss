@@ -5,6 +5,7 @@ body{
   color: #691a40;
   font-size: 18px;
 }
+
 .btn,
 a{
   outline: 0 !important;
@@ -399,6 +400,177 @@ position: relative;
   color: #fff;
   font-size: 23px;
 }
+.login_modal{
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+}
+  .modal-content{
+    border: 1px solid #691a40;
+        border-radius: 25px;
+        .close{
+          position: absolute;
+    right: -19px;
+    background: #fff;
+    z-index: 2;
+    opacity: .8;
+    padding: 0;
+    border-radius: 25px;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #691a40;
+    top: -18px;
+    span{
+          font-size: 30px;
+    }
+        }
+    .header{
+      background: #691a40;
+      padding: 5px;
+      margin-top: 15px;
+          margin-bottom: 35px;
+      h3{
+        margin: 7px 0;
+        color: #fff;
+      }
+    }
+    .modal-body{
+      overflow: hidden;
+          border-radius: 25px;
+  background-image:url('/assets/login_bg.jpg');
+background-repeat:no-repeat;
+  background-size: cover;
+height: 100%;
+
+
+      .login_area{
+        overflow: hidden;
+      }
+      .left-inner-addon {
+        position: relative;
+      }
+    .left-inner-addon input {
+        padding-left: 40px;    
+    }
+    .left-inner-addon i {
+        position: absolute;
+        padding: 15px 12px;
+        color: #425465;
+        pointer-events: none;
+    }
+    
+    .right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 40px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding:15px 12px;
+    color: #425465;
+    pointer-events: none;
+}
+label{
+  font-weight: normal;
+      margin-bottom: 10px;
+}
+.form-control{
+  height: 45px;
+  border: 1px solid #691a40;
+  font-size: 18px;
+  line-height: 1.42857143;
+  color: #691a40;
+  background: transparent;
+
+}
+.form-control::-webkit-input-placeholder { color: #691a40; }
+.form-control:-moz-placeholder { color: #691a40; }
+.form-control::-moz-placeholder { color: #691a40; }
+.form-control:-ms-input-placeholder { color: #691a40; }
+.btn_area{
+  a{
+  color: #691a40;
+}
+  .btn{
+   background: #691a40;
+    color: #fff;
+    border-color:  #691a40;
+    text-transform: uppercase;
+    min-width: 110px;
+    margin: 0 0 8px;
+    font-size: 17px;
+    border-radius: 6px;
+    min-height: 41px;
+}
+  }
+textarea:focus,
+input:focus,
+select:focus,
+.uneditable-input:focus {   
+  border-color: #691a40;
+  box-shadow: none;
+  outline: 0 none;
+}
+.b_bottom{
+  a{
+    margin-bottom: 15px;
+        display: inline-block;
+  }
+  border-bottom: 1px solid #691a40;
+    margin: 0px 50px;
+}
+  .create_area{
+    padding: 0 50px;
+        margin-bottom: 50px;
+    .header{
+      background: transparent;
+      p{
+        font-size: 22px;
+      }
+    }
+    .input-group-addon{
+      background-color: #691a40;
+      border: 1px solid #691a40;
+      color: #fff;
+      font-size: 18px;
+    }
+    .select_box{
+      .input-group-addon{
+          background: transparent;
+          color: #425465 !important;
+          border: 0 !important;
+        }
+      .input-group{
+        
+        border: 1px solid;
+    border-radius: 4px;
+    background: transparent;
+      }
+    select{
+          margin-left: -2px;
+        border: 0 !important;
+    }
+    }
+    .text_area{
+      margin: 50px 0;
+      padding: 15px;
+      label{
+        font-weight: bold;;
+      }
+      textarea{
+        resize:none;
+        background: transparent;
+      }
+      
+      .form-control{
+        height: auto !important;
+      }
+    }
+  }
+}
+  }
+}
 @media only screen and (max-width: 999px) {
   .header .navbar-default .navbar-nav.left_nav>li>a{
     padding: 3px 10px;
@@ -411,6 +583,9 @@ position: relative;
 }
 }
 @media only screen and (max-width: 767px) {
+  .create_area {
+    padding: 0 !important;
+}
   .navbar-default .navbar-collapse, .navbar-default .navbar-form {
     border-color: #e7e7e7;
     background: #fff;
@@ -520,10 +695,13 @@ position: relative;
 }
 .header .banner .caption h1 {
     line-height: 37px;
-    font-size: 28px;
+    font-size: 25px;
 }
 .how_it_work .img-tag {
     top: -20px;
+}
+.header .top_header .right_nav ul li{
+      padding: 10px 19px;
 }
 }
 
