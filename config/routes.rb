@@ -16,6 +16,7 @@ Rails.application.routes.draw do
    match "/sign_up_as_airplan" => "users#sign_up_as_airplan", :via => [:get, :post]
   # Example of regular route:
     get 'broker_board' => 'dashboard#broker_board'
+    get 'demo' => 'dashboard#demo'
     get 'airplane_board' => 'dashboard#airplane_board'
     post 'search_by_broker' => 'broker_quotes#search_by_broker'
 

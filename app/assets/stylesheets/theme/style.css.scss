@@ -433,6 +433,7 @@ position: relative;
         color: #fff;
       }
     }
+
     .modal-body{
       overflow: hidden;
           border-radius: 25px;
@@ -571,6 +572,239 @@ select:focus,
 }
   }
 }
+/*dashborad css start*/
+.dashborad{
+  background-image:url('/assets/dashborad_bg.jpg');
+  background-repeat:no-repeat;
+  background-size: cover;
+  height: 100%;
+  .holder{
+    min-height:100vh;
+    .heading_holder{
+          margin-bottom: 65px;
+      h3::after {
+      content: "";
+      display: inline-block;
+      clear: both;
+      background-image:url('/assets/down_icon.png');
+      width: 202px;
+      height: 15px;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 64px;
+      left: 13px;
+    }
+    h3{
+      font-size: 31px;
+    padding-bottom: 15px;
+    }
+  }
+    .heading_area{
+      h3{
+        border-bottom: 2px solid;
+        padding-bottom: 15px;
+        font-size: 31px;
+
+      }
+      
+    } 
+  }
+  .sidebar{
+        .syb{
+      background: #691a40 !important;
+    }
+    .btn{
+      min-width: 218px;
+      line-height: 38px;
+      background-color: transparent;
+      font-size: 18px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 15px;
+      border: 2px solid #691a40;
+      padding: 6px;
+    }
+  }
+  .left-inner-addon {
+        position: relative;
+      }
+    .left-inner-addon input {
+        padding-left: 40px;    
+    }
+    .left-inner-addon i {
+        position: absolute;
+        padding: 15px 12px;
+        color: #425465;
+        pointer-events: none;
+    }
+    
+    .right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-right: 40px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding:15px 12px;
+    color: #425465;
+    pointer-events: none;
+}
+label{
+  font-weight: normal;
+      margin-bottom: 10px;
+}
+.form-control{
+  height: 45px;
+  border: 1px solid #691a40;
+  font-size: 18px;
+  line-height: 1.42857143;
+  color: #691a40;
+  background: transparent;
+
+}
+.form-control::-webkit-input-placeholder { color: #691a40; }
+.form-control:-moz-placeholder { color: #691a40; }
+.form-control::-moz-placeholder { color: #691a40; }
+.form-control:-ms-input-placeholder { color: #691a40; }
+.btn_area{
+  a{
+  color: #691a40;
+}
+}
+.create_area{
+    padding: 50px 0;
+        margin-bottom: 50px;
+    .header{
+      background: transparent;
+      p{
+        font-size: 22px;
+      }
+    }
+    .input-group-addon{
+      background-color: #691a40;
+      border: 1px solid #691a40;
+      color: #fff;
+      font-size: 18px;
+    }
+    .select_box{
+      .input-group-addon{
+          background: transparent;
+          color: #425465 !important;
+          border: 0 !important;
+        }
+      .input-group{
+        
+        border: 1px solid;
+    border-radius: 4px;
+    background: transparent;
+      }
+    select{
+          margin-left: -2px;
+        border: 0 !important;
+    }
+    }
+    .text_area{
+      margin: 50px 0;
+      padding: 15px;
+      label{
+        font-weight: bold;;
+      }
+      textarea{
+        resize:none;
+        background: transparent;
+      }
+      
+      .form-control{
+        height: auto !important;
+      }
+    }
+  }
+  .info_area{
+    margin: 25px 0;
+  }
+  .info_labal{
+    label{
+      line-height: 100px;
+    }
+  }
+  .dimension_area,
+  .width_area,
+  .datepicker_area,
+  .imageupload_area{
+    margin-bottom: 15px;
+    overflow: hidden;
+    width: 100%;
+  }
+  .f_size17{
+    font-size: 17px;
+  }
+  .btn-upload{
+    margin-top: 28px;
+    line-height: 38px;
+    background-color: #691a40;
+    font-size: 18px;
+    color: #fff;
+    float: right;
+    border: 2px solid #691a40;
+    padding: 6px 10px;
+  }
+  .nature_area{
+    margin: 25px 0;
+    .head{
+      margin-bottom: 50px;
+      position: relative;
+      label::after {
+      content: "";
+      display: inline-block;
+      clear: both;
+      background-image:url('/assets/down_icon.png');
+      width: 202px;
+      height: 15px;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 33px;
+      left: 0;
+    }
+    }
+    .btn{
+      margin-bottom:50px;
+      width: 100%;
+      line-height: 38px;
+      background-color: transparent;
+      font-size: 18px;
+      font-weight: normal;
+      color: #fff;
+      margin-bottom: 15px;
+      border: 2px solid #691a40;
+      padding: 6px;
+    }
+    .text_area{
+      padding: 0;
+      label{
+            font-size: 16px;
+      span{
+        font-weight: normal;
+      }
+      }
+    }
+     .syb{
+      background: #691a40 !important;
+    }
+  }
+  .btn_area{
+    margin: 25px 0;
+    text-align: center;
+    .btn{
+      max-width: 200px;
+      margin: 25px 0;
+      background: #691a40 !important;
+    }
+  }
+}
+/*dashborad css end*/
+
 @media only screen and (max-width: 999px) {
   .header .navbar-default .navbar-nav.left_nav>li>a{
     padding: 3px 10px;
