@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :airline_boards
   resources :airlines
-  devise_for :users, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations",sessions: 'users/sessions'}
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
@@ -11,12 +11,17 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'dashboard#index'
-   resources :users
+   root 'dashboard#home'
+   resources :users do
+    member do
+        post 'login_user'
+      end
+    end
    resources :broker_quotes
    match "/sign_up_as_airplan" => "users#sign_up_as_airplan", :via => [:get, :post]
   # Example of regular route:
     get 'broker_board' => 'dashboard#broker_board'
+    get 'demo' => 'dashboard#demo'
     get 'airplane_board' => 'dashboard#airplane_board'
     post 'search_by_broker' => 'broker_quotes#search_by_broker'
 
