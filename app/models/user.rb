@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_one :broker_profile
   has_many :broker_quotes
+  has_many :airline_quotes
   accepts_nested_attributes_for :broker_profile
   has_many :airplanes
   belongs_to :airline

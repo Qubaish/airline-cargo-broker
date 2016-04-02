@@ -1,0 +1,171 @@
+<div class="dashborad">
+  <div class="container">
+    <div class="holder">
+      <div class="row">
+        <%= render partial: "shared/sidebar_airline"%>
+        <div class="col-md-9 col-sm-8">
+          <div class="heading_area text-center ">
+            <h3>Request a Quote</h3>
+          </div>
+          <div class="create_area">
+             <%= form_for @quote, url: {action: "create"} do |f| %>
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <div class="col-xs-12 col-sm-12 col-md-5">
+                       <div class="form-group">
+                          <div class="left-inner-addon">
+                             <i class="fa fa-bars"></i>
+                                <%= f.text_field :from_airpot, class: "form-control", placeholder: "Origin ", required: true%>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 text-center">
+                       <h4>to</h4>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-5 pull-right">
+                       <div class="form-group">
+                          <div class="left-inner-addon">
+                             <i class="fa fa-asterisk"></i>
+                                <%= f.text_field :to_airpot, class: "form-control", placeholder: "Destination", required: true %>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="info_area col-md-12">
+                       <label><strong>Available Load:</strong></label>
+                    </div>
+                    <div class="dimension_area">
+                       <div class="col-md-2 info_labal">
+                          <label>Dimensions</label>
+                       </div>
+                       <div class="col-md-3">
+                          <div class="form-group">
+                             <label>Length</label>
+                                <%= f.text_field :cargo_dimension_length, class: "form-control" %>
+                          </div>
+                       </div>
+                       <div class="col-md-3">
+                          <div class="form-group">
+                             <label>Width</label>
+                                <%= f.text_field :cargo_dimension_width, class: "form-control" %>
+                          </div>
+                       </div>
+                       <div class="col-md-3">
+                          <div class="form-group">
+                             <label>Height</label>
+                                <%= f.text_field :cargo_dimension_height, class: "form-control" %>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="width_area">
+                       <div class="col-md-2 info_labal">
+                          <label>width</label>
+                       </div>
+                       <div class="col-md-3">
+                          <div class="form-group">
+                             <label>Kgs</label>
+                                <%= f.text_field :weight, class: "form-control" %>
+                          </div>
+                       </div>
+                       <div class="col-md-3">
+                          <div class="form-group">
+                             <label>Volume</label>
+                                <%= f.text_field :volume, class: "form-control" %>
+                          </div>
+                       </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="imageupload_area">
+                    <div class="col-md-2 info_labal">
+                          <label>Number of </label>
+                       </div>
+                       <div class="col-md-5">
+                          <div class="form-group">
+                             <label>palates/skids/PCs</label>
+                                <%= f.text_field :quantiy, class: "form-control" %>
+                          </div>
+                       </div>
+                       <div class="col-md-1">
+                       </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="datepicker_area">
+                       <div class="col-md-2 f_size17 ">
+                          <label>Date Required</label>
+                       </div>
+                       <div class="col-md-2">
+                          <div class="form-group">
+                             <label>Day</label>
+                             <input type="text" name="day" class="form-control" placeholder="  ">
+                          </div>
+                       </div>
+                       <div class="col-md-2">
+                          <div class="form-group">
+                             <label>Month</label>
+                             <input type="text" name="month" class="form-control" placeholder="  ">
+                          </div>
+                       </div>
+                       <div class="col-md-3">
+                          <div class="form-group">
+                             <label>year</label>
+                             <input type="text" name="year" class="form-control" placeholder="  ">
+                          </div>
+                       </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="nature_area">
+                       <div class="col-md-12  col-sm-12 col-xs-12 pull-right">
+                            <div class="col-md-6">
+                                <div class="text_area">
+                                   <label>Additional Information <span>(optional field)</span> </label>
+                                   <%= f.text_area :additional_information, class: "form-control" %>
+                               </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="text_area">
+                                 <label>Special Requirements <span>(optional field)</span></label>
+                                    <%= f.text_area :special_requirements, class: "form-control" %>
+                              </div>
+                            </div>
+                       </div>
+                       <div class="btn_area">
+                            <%= f.submit "Add Quote", class: "btn btn-default"%>
+                       </div>
+                    </div>
+                </div>
+             <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+// $(document).ready(function(){
+//   jQuery.validator.addMethod("lettersonly", function(value, element) {
+//     return this.optional(element) || /^[a-z\s]+$/i.test(value);
+//   }, "Letters only please"); 
+
+//   $.validator.addMethod("lettersNumbersOnly", function(value, element) {
+//     return this.optional(element) || /^[a-z0-9\-\s]+$/i.test(value);
+//   }, "Username must contain only letters, numbers, or dashes.");
+
+//   $("#new_broker_quote").validate({
+//      rules: {
+//       "broker_quote[name]": { lettersonly: true},
+//       "broker_quote[company_name]" : {lettersNumbersOnly: true},
+//       "broker_quote[email]" : {email: true},
+//       "broker_quote[phone_number]" : {digits: true},
+//       "broker_quote[from_airpot]" : {lettersonly: true},
+//       "broker_quote[to_airpot]" : {lettersonly :true},
+//       "day" :{ required: true, maxlength: 2},
+//       "month" :{ required: true, maxlength: 2},
+//       "year" :{ required: true, maxlength: 4}
+//     }
+//     });
+
+//   $('#datetimepicker1').datetimepicker();
+// });
+// </script>
