@@ -8,8 +8,8 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-   resource = warden.authenticate!(:scope => :user)
-    sign_in(:user, resource)
+   # resource = warden.authenticate!(:scope => :user)
+   #  sign_in(:user, resource)
   # return render :json => {:success => true}
     #User.authenticate(:email=> params[:user][:email],:password=>  params[:user][:password])
   end
