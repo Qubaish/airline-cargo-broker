@@ -1,12 +1,17 @@
 class DashboardController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [:home, :demo]
   before_action :broker
+  before_action :banner_nav, only: [:home]
+
   def index
     if current_user.has_role? :broker
       redirect_to broker_board_url      
     elsif current_user.has_role? :airplane
       redirect_to airplane_board_url
     end
+  end
+
+  def home
   end
 
   def broker_board

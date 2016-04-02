@@ -2,7 +2,7 @@
   <div class="container">
     <div class="holder">
       <div class="row">
-        <%= render partial: "shared/sidebar"%>
+        <%= render partial: "shared/sidebar_airline"%>
         <div class="col-md-9 col-sm-8">
           <div class="heading_area text-center ">
             <h3>Request a Quote</h3>
@@ -10,56 +10,6 @@
           <div class="create_area">
              <%= form_for @quote, url: {action: "create"} do |f| %>
                 <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-5">
-                       <div class="form-group">
-                          <div class="left-inner-addon">
-                             <i class="fa fa-user"></i>
-                              <%= f.text_field :name, class: "form-control", placeholder: "Your Name", required: true%>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-5 pull-right">
-                       <div class="form-group">
-                          <div class="left-inner-addon">
-                             <i class="fa fa-envelope"></i>
-                            <%= f.text_field :email, class: "form-control",  placeholder: "Your Email", required: true%>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-xs-12 col-sm-12 col-md-5">
-                       <div class="form-group">
-                          <div class="left-inner-addon">
-                             <i class="fa fa-building-o"></i>
-                            <%= f.text_field :company_name, class: "form-control", placeholder: "Company Name", required: true%>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-5 pull-right">
-                       <div class="form-group">
-                          <div class="left-inner-addon">
-                             <i class="fa fa-building-o"></i>
-                            <%= f.text_field :phone_number, class: "form-control", id: "exampleInputAmount" , placeholder: "Phone No", required: true%>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-xs-12 col-sm-12 col-md-5">
-                       <div class="form-group">
-                          <div class="left-inner-addon">
-                             <i class="fa fa-asterisk"></i>
-                             <%= f.text_field :hear, class: "form-control", placeholder: "How did you hear" %>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-5 pull-right">
-                       <div class="form-group">
-                          <div class="left-inner-addon">
-                             <i class="fa fa-asterisk"></i>
-                             <%= f.text_field :uan_number, placeholder: "UAN Number ", class: "form-control"%>
-                          </div>
-                       </div>
-                    </div>
                     <div class="clearfix"></div>
                     <div class="col-xs-12 col-sm-12 col-md-5">
                        <div class="form-group">
@@ -82,7 +32,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="info_area col-md-12">
-                       <label><strong>Freight information:</strong></label>
+                       <label><strong>Available Load:</strong></label>
                     </div>
                     <div class="dimension_area">
                        <div class="col-md-2 info_labal">
@@ -115,7 +65,7 @@
                        <div class="col-md-3">
                           <div class="form-group">
                              <label>Kgs</label>
-                                <%= f.text_field :payload, class: "form-control" %>
+                                <%= f.text_field :weight, class: "form-control" %>
                           </div>
                        </div>
                        <div class="col-md-3">
@@ -127,24 +77,16 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="imageupload_area">
+                    <div class="col-md-2 info_labal">
+                          <label>Number of </label>
+                       </div>
                        <div class="col-md-5">
                           <div class="form-group">
-                             <label>Number of palates/skids/PCs</label>
+                             <label>palates/skids/PCs</label>
                                 <%= f.text_field :quantiy, class: "form-control" %>
                           </div>
                        </div>
                        <div class="col-md-1">
-                       </div>
-                       <div class="col-md-3">
-                          <div class="form-group">
-                             <label>Image</label>
-                             <input type="text" class="form-control" placeholder="  ">
-                          </div>
-                       </div>
-                       <div class="col-md-3">
-                          <div class="form-group">
-                             <a class="btn btn-default btn-upload" href="#" role="button">Upload</a>
-                          </div>
                        </div>
                     </div>
                     <div class="clearfix"></div>
@@ -173,21 +115,6 @@
                     </div>
                     <div class="clearfix"></div>
                     <div class="nature_area">
-                       <div class="head col-sm-12">
-                          <label><strong>Nature of Cargo</strong></label>
-                       </div>
-                       <div class="col-md-12">
-                          <%= f.select :nature_of_cargo, BrokerQuote::NATURE_OF_CARGO, {}, { :class => 'form-control' } %>
-
-                         <!-- <div class="col-md-6">
-                          <a class="btn btn-default syb" href="#" role="button">Dangerous Goods</a>
-                          <a class="btn btn-default syb" href="#" role="button">Heavy/outsized</a>
-                        </div>
-                        <div class="col-md-6">
-                         <a class="btn btn-default " href="#" role="button">Dangerous Goods</a>
-                         <a class="btn btn-default " href="#" role="button">Heavy/outsized</a>
-                        </div> -->
-                       </div>
                        <div class="col-md-12  col-sm-12 col-xs-12 pull-right">
                             <div class="col-md-6">
                                 <div class="text_area">
@@ -216,29 +143,29 @@
 </div>
 
 <script type="text/javascript">
-$(document).ready(function(){
-  jQuery.validator.addMethod("lettersonly", function(value, element) {
-    return this.optional(element) || /^[a-z\s]+$/i.test(value);
-  }, "Letters only please"); 
+// $(document).ready(function(){
+//   jQuery.validator.addMethod("lettersonly", function(value, element) {
+//     return this.optional(element) || /^[a-z\s]+$/i.test(value);
+//   }, "Letters only please"); 
 
-  $.validator.addMethod("lettersNumbersOnly", function(value, element) {
-    return this.optional(element) || /^[a-z0-9\-\s]+$/i.test(value);
-  }, "Username must contain only letters, numbers, or dashes.");
+//   $.validator.addMethod("lettersNumbersOnly", function(value, element) {
+//     return this.optional(element) || /^[a-z0-9\-\s]+$/i.test(value);
+//   }, "Username must contain only letters, numbers, or dashes.");
 
-  $("#new_broker_quote").validate({
-     rules: {
-      "broker_quote[name]": { lettersonly: true},
-      "broker_quote[company_name]" : {lettersNumbersOnly: true},
-      "broker_quote[email]" : {email: true},
-      "broker_quote[phone_number]" : {digits: true},
-      "broker_quote[from_airpot]" : {lettersonly: true},
-      "broker_quote[to_airpot]" : {lettersonly :true},
-      "day" :{ required: true, maxlength: 2},
-      "month" :{ required: true, maxlength: 2},
-      "year" :{ required: true, maxlength: 4}
-    }
-    });
+//   $("#new_broker_quote").validate({
+//      rules: {
+//       "broker_quote[name]": { lettersonly: true},
+//       "broker_quote[company_name]" : {lettersNumbersOnly: true},
+//       "broker_quote[email]" : {email: true},
+//       "broker_quote[phone_number]" : {digits: true},
+//       "broker_quote[from_airpot]" : {lettersonly: true},
+//       "broker_quote[to_airpot]" : {lettersonly :true},
+//       "day" :{ required: true, maxlength: 2},
+//       "month" :{ required: true, maxlength: 2},
+//       "year" :{ required: true, maxlength: 4}
+//     }
+//     });
 
-  $('#datetimepicker1').datetimepicker();
-});
-</script>
+//   $('#datetimepicker1').datetimepicker();
+// });
+// </script>

@@ -1,0 +1,2 @@
+module AirlineQuotesHelper
+end
