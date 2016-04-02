@@ -1,4 +1,5 @@
 class AirlineQuotesController < ApplicationController
+  before_filter :airline_quote, only: [:show]
 
   def new
     @quote = AirlineQuote.new
@@ -14,7 +15,20 @@ class AirlineQuotesController < ApplicationController
     end
   end
 
-  private 
+  def show
+  end
+
+  def user_bid
+    user = User.find(params["user"].to_i)
+    user.airline_quotes << AirlineQuote.find(params["quote"].to_i)
+    render :json => { :success => "success"}
+  end
+
+  private
+
+  def airline_quote
+    @airline_quote = AirlineQuote.find(params[:id])
+  end
 
   def airline_quote_params
     date = params["day"] + "-" + params["month"] + "-" + params["year"]

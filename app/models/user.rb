@@ -2,11 +2,13 @@ class User < ActiveRecord::Base
 
   has_one :broker_profile
   has_many :broker_quotes
-  has_many :airline_quotes
   accepts_nested_attributes_for :broker_profile
   has_many :airplanes
   belongs_to :airline
   accepts_nested_attributes_for :airplanes
+
+  has_many :airline_quotes, :through => :bids
+  has_many :bids
 
   rolify
 

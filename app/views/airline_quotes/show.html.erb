@@ -1,0 +1,54 @@
+<div class="dashborad">
+    <div class="container">
+        <div class="holder">
+            <div class="row">
+                <%= render partial: "shared/sidebar_airline"%>
+                <div class="col-md-9 col-sm-8">
+                <div class="heading_area text-center dashboard-heading">
+                      <h3>Airline Available Load</h3>
+                  </div>
+                  <div class="alert alert-success" style="display:none">
+                      Thanks for your interest .. Email is generated to airline.
+                  </div>
+
+                  <% if has_bid(current_user, @airline_quote) %>
+                    You already bid to this airline
+                  <% else %>
+                    <button type="button" id="bid" class="btn btn-info">Bid</button>
+                    <input type="hidden" id="user" value="<%= current_user.id%>">
+                    <input type="hidden" id="quote" value="<%= @airline_quote.id%>">
+                  <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    var bid = $("#bid");
+    var user = $("#user");
+    var quote = $("#quote");
+    var alert = $(".alert");
+
+
+    function addBid(){
+      $.ajax({
+         type: "POST",
+         url: "/add-bid",
+         data : {user: user.val() , quote: quote.val()},
+         dataType: "json",
+         success: function (result) {
+          bid.hide();
+          alert.show();
+         }
+      });
+    }
+
+    bid.click(function(e){
+      e.preventDefault();
+      addBid();
+    });
+  });
+</script>
