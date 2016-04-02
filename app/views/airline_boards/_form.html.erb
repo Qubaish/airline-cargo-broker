@@ -1,0 +1,113 @@
+<div class="container">
+<%= form_for(@airline_board,:html => {:class => "form-horizontal",:id=> "new_airline_borad"}) do |f| %>
+<%#= form_for(@airline_board) do |f| %>
+  <% if @airline_board.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@airline_board.errors.count, "error") %> prohibited this airline_board from being saved:</h2>
+
+      <ul>
+      <% @airline_board.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+   
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">From(airport):</label>
+      <div class="col-sm-10">
+       <%= f.text_field :from_airpot, class: "form-control", required: true%>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">To(airport):</label>
+      <div class="col-sm-10">
+       <%= f.text_field :to_airpot, class: "form-control", required: true%>
+      </div>
+    </div>
+  
+    <div class="form-group">
+      <label class="control-label" for="email">Date Available:</label>
+      <div class="input-group date col-md-3" id="datetimepicker1">
+       <%= f.text_field :date_available, class: "form-control" %>
+       <span class="input-group-addon"></span>
+            </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Nature of Cargo:</label>
+      <div class="col-sm-10">
+      <%= f.select :nature_of_cargo, BrokerQuote::NATURE_OF_CARGO, {}, { :class => 'form-control' } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Volume in CBM:</label>
+      <div class="col-sm-10">
+       <%= f.text_field :volume, class: "form-control" %>
+     </div>
+   </div>
+   <h3>Frieght Information</h3>
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Cargo Dimensions (width, height, length) in CMs:</label>
+      <div class="col-sm-10">
+       <%= f.text_field :cargo_dimension_width, class: "form-control" %>
+       <%= f.text_field :cargo_dimension_height, class: "form-control" %>
+       <%= f.text_field :cargo_dimension_length, class: "form-control" %>
+     </div>
+   </div>
+   <div class="form-group">
+    <label class="control-label col-sm-2" for="email">No of Pallets/skids/PCs:</label>
+    <div class="col-sm-10">
+     <%= f.text_field :quantiy, class: "form-control" %>
+   </div>
+ </div>
+ <br>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Additional Information:</label>
+    <div class="col-sm-10">
+     <%= f.text_field :additional_information, class: "form-control" %>
+   </div>
+ </div>
+ <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Special Requirements:</label>
+    <div class="col-sm-10">
+     <%= f.text_field :special_requirements, class: "form-control" %>
+   </div>
+ </div>
+     <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <%= f.submit "Add Load", class: "btn btn-primary"%>
+      </div>
+    </div>
+<% end %>
+
+</div>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  jQuery.validator.addMethod("lettersonly", function(value, element) {
+    return this.optional(element) || /^[a-z]+$/i.test(value);
+  }, "Letters only please"); 
+
+  $.validator.addMethod("lettersNumbersOnly", function(value, element) {
+    return this.optional(element) || /^[a-z0-9\-\s]+$/i.test(value);
+  }, "Username must contain only letters, numbers, or dashes.");
+
+  $("#new_airline_borad").validate({
+     rules: {
+      // "broker_quote[name]": { lettersonly: true},
+      // "broker_quote[company_name]" : {lettersNumbersOnly: true},
+      "broker_quote[email]" : {email: true},
+      "airline_board[volume]" : {digits: true},
+      "airline_board[cargo_dimension_width]" : {digits: true},
+      "airline_board[cargo_dimension_height]" : {digits: true},
+      "airline_board[cargo_dimension_length]" : {digits: true},
+      " airline_board[quantiy]" : {digits: true},
+      "broker_quote[from_airpot]" : {lettersonly: true},
+      "broker_quote[to_airpot]" : {lettersonly :true}
+    }
+    });
+
+  $('#datetimepicker1').datetimepicker();
+});
+</script>

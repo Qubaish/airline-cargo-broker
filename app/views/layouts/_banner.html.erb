@@ -23,7 +23,7 @@
                         </ul>
                         <ul class="nav nav navbar-nav pull-right">
                            <%if !current_user %>
-                           <li ><a href="/users/sign_in">Login / </a></li>
+                           <li><a href="#" data-toggle="modal" data-target="#login_form">Login /</a></li>
                            <% else %>
                            <li ><a href="<%= destroy_user_session_path %>">Logout / </a></li>
                            <% end %>
@@ -43,3 +43,4 @@
                <a class="btn btn-default" href="#" role="button">Post Your Inquire</a>
             </div>
          </div>
+         <%=render :partial => "/dashboard/login_popup" %>

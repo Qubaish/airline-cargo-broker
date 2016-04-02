@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-# before_filter :configure_sign_in_params, only: [:create]
+#before_filter :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -7,9 +7,12 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+   # resource = warden.authenticate!(:scope => :user)
+   #  sign_in(:user, resource)
+  # return render :json => {:success => true}
+    #User.authenticate(:email=> params[:user][:email],:password=>  params[:user][:password])
+  end
 
   # DELETE /resource/sign_out
   # def destroy
