@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get 'load-board' => 'dashboard#load_board'
   post 'search_by_broker' => 'broker_quotes#search_by_broker'
   post 'add-bid' => "airline_quotes#user_bid"
+  get 'broker-bids' => "users#broker_bids"
+  get "bidded-quotes" => "airline_quotes#bidded_quotes"
 
 end

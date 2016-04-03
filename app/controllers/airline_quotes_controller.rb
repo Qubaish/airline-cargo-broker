@@ -24,6 +24,10 @@ class AirlineQuotesController < ApplicationController
     render :json => { :success => "success"}
   end
 
+  def bidded_quotes
+    @bids = current_user.bids
+  end
+
   private
 
   def airline_quote
