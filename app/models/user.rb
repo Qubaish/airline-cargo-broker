@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :broker_profile
   has_many :airplanes
   belongs_to :airline
+  validates :email, :uniqueness => { :case_sensitive => false }
   accepts_nested_attributes_for :airplanes
 
   has_many :airline_quotes, :through => :bids

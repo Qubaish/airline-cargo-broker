@@ -12,9 +12,9 @@ class RegistrationsController < Devise::RegistrationsController
     user = User.create(configure_sign_up_params)
     if user
       user.add_role :broker
-      falsh[:notice] = "Please check you email"
+      flash[:notice] = "Please check you email"
     else
-      falsh[:notice] = "Please try agian"
+      flash[:notice] = "Please try agian"
     end
     redirect_to root_url
   end
