@@ -1,0 +1,41 @@
+<!-- dashborad start -->
+<div class="dashborad">
+    <div class="container">
+        <div class="holder">
+            <div class="row">
+                <%= render partial: "shared/sidebar_airline"%>
+                <div class="col-md-9 col-sm-8">
+                <div class="heading_area text-center dashboard-heading">
+                      <h3>Bidding Quotes History</h3>
+                  </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>Sr no</th>
+                                    <th>Bidder Name</th>
+                                    <th>Date Bidded</th>
+                                    <th>Date Requested</th>
+                                    <th>Bid Details</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% @bids.each_with_index do |bid, index|%>
+                                    <tr>
+                                        <td><%= index + 1%></td>
+                                        <td><%= bid.user.try(:broker_profile).try(:contact_name)%></td>
+                                        <td><%= bid.created_at.strftime("%B %d %Y") %></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

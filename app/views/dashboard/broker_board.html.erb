@@ -5,33 +5,32 @@
             <div class="row">
                 <%= render partial: "shared/sidebar"%>
                 <div class="col-md-9 col-sm-8">
+                <div class="heading_area text-center dashboard-heading">
+                      <h3>Posted Quotes History</h3>
+                  </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-bordered table-borderless">
                             <thead>
                                 <tr>
                                     <th>Date</th>
-                                    <th>Broker</th>
                                     <th>Origin</th>
                                     <th>Destination</th>
                                     <th>Date Requested</th>
                                     <th>Size</th>
                                     <th>Weight</th>
-                                    <th>Type Of Cargo</th>
-                                    <th>Action</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <% @broker_data.each do |data| %>
                                     <tr>
                                         <td><%= data.created_at.strftime("%B %d %Y")%></td>
-                                        <td><%= link_to data.name, broker_quote_path(data.id)%></td>
                                         <td><%= data.from_airpot%></td>
                                         <td><%= data.to_airpot%></td>
                                         <td><%= data.date_required.strftime("%B %d %Y") if data.date_required.present?%></td>
                                         <td>L<%= data.cargo_dimension_length%> W <%= data.cargo_dimension_width%> H <%= data.cargo_dimension_height%> </td>
                                         <td><%= data.payload%></td>
-                                        <td><%= data.nature_of_cargo%></td>
-                                        <td><button class="btn btn-sm btn-danger">Delete</button></td>
+                                        <td></td>
                                     </tr>
                                 <% end %>
                             </tbody>

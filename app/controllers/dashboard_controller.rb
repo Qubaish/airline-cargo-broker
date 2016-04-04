@@ -23,7 +23,10 @@ class DashboardController < ApplicationController
   end
 
   def airplane_board
-   @all_quotes = BrokerQuote.all
+   @airplane_data = AirlineQuote.all
+  end
+
+  def load_board
   end
 
   private

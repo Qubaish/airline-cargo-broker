@@ -575,6 +575,21 @@ select:focus,
 }
 /*dashborad css start*/
 .dashborad{
+  .table-bordered { border: none !important; background-color: #F2EEEC;}
+  .dashboard-heading { margin-bottom: 65px;}
+  .table-bordered > tbody > tr > td,
+.table-bordered > thead > tr > td,
+.table-bordered {
+    border-bottom:0;
+    border-top: 0;
+}
+
+table {
+    border-collapse:separate;
+    border-radius:15px;
+    -moz-border-radius:6px;
+}
+
   background-image:url('/assets/dashborad_bg.jpg');
   background-repeat:no-repeat;
   background-size: cover;
