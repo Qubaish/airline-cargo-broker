@@ -11,7 +11,7 @@ class AirlineQuotesController < ApplicationController
     if @quote.save
       redirect_to "/airplane_board"
     else
-      render :text => "abc"
+      redirect_to root_path, notice: 'Something went wrong'
     end
   end
 
