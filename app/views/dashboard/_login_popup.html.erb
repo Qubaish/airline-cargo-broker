@@ -6,12 +6,13 @@
        <div class="modal-body">
         <div class="login_area row">
           <div class="header text-center ">
-          <h3>Broker Login</h3>
+          <h3>Login</h3>
         </div>
         <%@user = User.new%>
         <%#= form_for :@user,:html => { :id => "invited_user" }, :url => {:controller => "session", :action => "create" }  do |f| %>
          <%= form_for(@user,  url: session_path(@user)) do |f| %>
           <div class="col-xs-12 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" >
+          <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
             <div class="form-group">
             <div id="forgot_error_msg" class="error" style="display:none" ></div>
               <label>Already registered with us?</label>
@@ -23,7 +24,7 @@
             <div class="form-group">
               <div class="left-inner-addon">
                   <i class="fa fa-asterisk"></i>
-                  <input autocomplete="off" type="password" class="form-control" name="user[password]" id="user_password">
+                  <input autocomplete="off" type="password" class="form-control" name="user[password]" id="user_password" placeholder="Enter Password">
               </div>
             </div>
             <div class="text-center btn_area">
@@ -32,7 +33,8 @@
           </div>
         <%end%>
         <p class="b_bottom">
-        <a href="#" onclick="show_box('forget')" data-toggle="modal" data-target="#forget_password">Forget the paswword ?</a><br />
+        <a href="#" onclick="show_box('forget')" data-toggle="modal" data-target="#forget_password">Forgot your password?</a><br />
+        <a href="#" onclick="show_box('resend')" data-toggle="modal" data-target="#email_confirmation">Didn't receive confirmation instructions?</a>
         </p>
       </div>
 <!--       <div class="create_area">
@@ -180,12 +182,20 @@
 </div>
 <script type="text/javascript">
   function show_box(id) {
+    console.log(id)
     if (id =="forget") {
-      $('#login_form').modal('hide')
+      $('#login_form').modal('hide');
+      $('#email_confirmation').modal('hide');
 
     }
     else if (id == "login") {
       $('#forget_password').modal('hide')
+      $('#email_confirmation').modal('hide')
+    }
+    else if (id == "resend"){
+       $('#login_form').modal('hide');
+      ('#forget_password').modal('hide')
+
     }
   }
 </script>

@@ -1,6 +1,8 @@
          <!-- End top header -->
          <div class="banner">
             <div class="container">
+              <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+              <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
                <nav class="navbar navbar-default">
                   <div class="container-fluid row">
                      <!-- Brand and toggle get grouped for better mobile display -->
@@ -44,3 +46,10 @@
             </div>
          </div>
          <%=render :partial => "/dashboard/login_popup" %>
+         <%=render :partial => "/dashboard/email_confrmation" %>
+<script type="text/javascript">
+<% if params[:loginfail] == "true"%>
+$('#login_form').modal('show');
+<%end%>
+  
+</script>

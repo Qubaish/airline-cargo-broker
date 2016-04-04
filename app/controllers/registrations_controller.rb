@@ -10,7 +10,12 @@ class RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     user = User.create(configure_sign_up_params)
-    user.add_role :broker
+    if user
+      user.add_role :broker
+      falsh[:notice] = "Please check you email"
+    else
+      falsh[:notice] = "Please try agian"
+    end
     redirect_to root_url
   end
 
@@ -42,7 +47,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    params.require(:user).permit( :email, :password, :password_confirmation, broker_profile_attributes: [:company_name, :contact_name, :area_of_service, :contact_address, :contact_phone, :iata_code, :year_in_service, :zip, :country] )
+    params.require(:user).permit( :email, :password, broker_profile_attributes: [:company_name, :contact_name, :area_of_service, :contact_address, :contact_phone, :iata_code, :year_in_service, :zip, :country,:broker_info] )
     # devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :confirm_password, :broker_profile_attributes => [:contact_name]) }
   end
 

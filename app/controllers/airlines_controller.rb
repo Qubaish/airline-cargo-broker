@@ -30,7 +30,7 @@ class AirlinesController < ApplicationController
     
     respond_to do |format|
       if @airline.save
-        @user = User.create(:email=>params[:airline][:users][:email],:password=>params[:airline][:users][:password],:password_confirmation=>params[:airline][:users][:password_confirmation],:airline_id=>@airline.id)
+        @user = User.create(:email=>params[:airline][:users][:email],:password=>params[:airline][:users][:password],:password_confirmation=>params[:airline][:users][:password],:airline_id=>@airline.id)
         @user.add_role(:airplane)
         format.html { redirect_to root_path, notice: 'Please Check you email for confirmation' }
         format.json { render :show, status: :created, location: @airline }
@@ -74,6 +74,6 @@ class AirlinesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def airline_params
       #params.require(:airline).permit( :airline_name,  user_attributes: [:email] )
-      params.require(:airline).permit(:airline_name,:airline_address,:country,:contact_person_name,:contact_person_address,:contact_person_email,:contact_number,:iata_code,:caa_license,:user_id,:year_in_service, :user_attributes=> [:email,:password,:password_confirmation])
+      params.require(:airline).permit(:airline_name,:airline_address,:country,:contact_person_name,:contact_person_address,:contact_person_email,:contact_number,:iata_code,:caa_license,:user_id,:year_in_service,:airline_info, :user_attributes=> [:email,:password,:password_confirmation])
     end
 end
