@@ -26,6 +26,7 @@
                         <ul class="nav nav navbar-nav pull-right">
                            <%if !current_user %>
                            <li><a href="#" data-toggle="modal" data-target="#login_form">Login /</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#sign_up_popup">Signup /</a></li>
                            <% else %>
                            <li ><a href="<%= destroy_user_session_path %>">Logout / </a></li>
                            <% end %>
@@ -46,6 +47,7 @@
             </div>
          </div>
          <%=render :partial => "/dashboard/login_popup" %>
+         <%=render :partial => "/shared/sign_up_popup" %>
          <%=render :partial => "/dashboard/email_confrmation" %>
 <script type="text/javascript">
 <% if params[:loginfail] == "true"%>
