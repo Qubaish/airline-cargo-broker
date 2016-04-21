@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   post 'add-bid' => "airline_quotes#user_bid"
   get 'broker-bids' => "users#broker_bids"
   get "bidded-quotes" => "airline_quotes#bidded_quotes"
+  get "load-board" => "dashboard#load_board"
 
 end

@@ -18,17 +18,26 @@
                      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav left_nav">
                            <li class="active"><a href="<%= root_url %>">Home </a></li>
-                           <li><a href="/airplane_board">Shipment Inquiries</a></li>
-                           <li ><a href="/broker_board">Freight Inquiries </a></li>
-                           <li ><a href="#">Tracking </a></li>
-                           <li ><a href="#">Pricing</a></li>
+                           <%if current_user.has_role?(RoleConstant::ADMIN) %>
+                              <li><a href="/airplane_board">Shipment Inquiries</a></li>
+                              <li ><a href="/broker_board">Freight Inquiries </a></li>
+                           <% end %>
+                           <%if current_user.has_role?(RoleConstant::BROKER) %>
+                              <li ><a href="/broker_board">Freight Inquiries </a></li>
+                           <% end %>
+                           <%if current_user.has_role?(RoleConstant::AIRLINE) %>
+                              <li><a href="/airplane_board">Shipment Inquiries</a></li>
+                           <% end %>
+                           <li ><a href="/load-board">Load Board </a></li>
+                           <li ><a href="#">How It Works</a></li>
+                           <li ><a href="#">Contact Us</a></li>
                         </ul>
                         <ul class="nav nav navbar-nav pull-right">
                            <%if !current_user %>
                            <li><a href="#" data-toggle="modal" data-target="#login_form">Login /</a></li>
-                            <li><a href="#" data-toggle="modal" data-target="#sign_up_popup">Signup /</a></li>
+                            <li><a href="#" data-toggle="modal" data-target="#sign_up_popup">Signup</a></li>
                            <% else %>
-                           <li ><a href="<%= destroy_user_session_path %>">Logout / </a></li>
+                           <li ><a href="<%= destroy_user_session_path %>">Logout  </a></li>
                            <% end %>
                         </ul>
                      </div>

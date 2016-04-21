@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def airplane_inquiries
-    @airplane_quotes_home = AirlineQuote.all.limit(5)
+    @airplane_quotes_home = Airline.all.limit(5)
   end
 
 end

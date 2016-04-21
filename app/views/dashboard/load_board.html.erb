@@ -1,0 +1,68 @@
+<div class="load_board" style="margin-top: 20px;">
+   <div class="row">
+   <div class="col-md-1">
+      </div>
+    <div class="col-md-5">       
+      <div class="well text-center">
+            <p>Broker Inquiries
+            </p>
+            <div class="col">
+               <table class="table table-bordered">
+                  <thead>
+                     <tr>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Payload</th>
+                        <th>Date Required </th>
+                        <th>Nature<br>of Goods</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  <% @broker_data.try(:each) do |bquotes|%>
+                     <tr>
+                        <td><%= bquotes.from_airpot %></td>
+                        <td><%= bquotes.to_airpot %></td>
+                        <td><%= bquotes.payload %></td>
+                        <td><%= date_format(bquotes.date_required) %></td>
+                        <td><%= bquotes.nature_of_cargo %></td>
+                     </tr>
+                     <% end %>
+                  </tbody>
+               </table>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-5">
+      <div class="well text-center">
+               <p>Airlines
+               </p>
+               <div class="col">
+                  <table class="table table-bordered">
+                     <thead>
+                        <tr>
+                           <th>Name</th>
+                           <th>Country</th>
+                           <th>Contact name</th>
+                           <th>Contact No</th>
+                           <th>Year in Service</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     <% @airplane_data.try(:each) do |aquotes| %>
+                        <tr>
+                           <td><%= aquotes.name %></td>
+                           <td><%= aquotes.country %></td>
+                           <td><%= aquotes.contact_person_name %></td>
+                           <td><%= aquotes.contact_number %></td>
+                           <td><%= aquotes.year_in_service %></td>
+                        </tr>
+                        <% end %>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-1">
+      </div>
+   </div>
+</div>

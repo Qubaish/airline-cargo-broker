@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
-  before_action :authenticate_user!, :except => [:home, :demo]
+  before_action :authenticate_user!, :except => [:home, :demo, :load_board]
   before_action :broker
-  before_action :banner_nav, only: [:home]
+  before_action :banner_nav, only: [:home, :load_board]
 
   def index
     if current_user.has_role? :broker
@@ -27,6 +27,8 @@ class DashboardController < ApplicationController
   end
 
   def load_board
+    @broker_data = BrokerQuote.all
+    @airplane_data = Airline.all
   end
 
   private
