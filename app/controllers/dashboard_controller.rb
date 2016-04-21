@@ -45,7 +45,7 @@ class DashboardController < ApplicationController
       else
         @broker_data = BrokerQuote.all
       end
-    elsif type = "Date"
+    elsif type == "Date"
        if params[:post][:q].present?
        date = params[:post][:q].to_date.strftime("%Y-%d-%m")
        @broker_data = BrokerQuote.search(date)
