@@ -82,12 +82,16 @@ Rails.application.configure do
 config.action_mailer.default_url_options = { :host => 'air-cargo-exchange.herokuapp.com' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-config.action_mailer.smtp_settings = {
-  :address   => "smtp.mandrillapp.com",
-  :port      => 587,
-  :user_name => "shoaib.iqbal07@gmail.com",
-  :password  => "ujGbtFHutP2Z9DLYMDMEyw"
-}
+  config.action_mailer.smtp_settings = {
+      :address              => "smtp.gmail.com",
+      :port                 => 587,
+      :domain               => "gmail.com",
+      :authentication => :login,
+      :user_name            => "shoaib.iqbal07@gmail.com",
+      :password             => "pakistani314",
+      :authentication       => :plain,
+      :enable_starttls_auto => true
+  }
 Rails.application.config.middleware.use ExceptionNotification::Rack,
   :email => {
     :email_prefix => "[Error] ",

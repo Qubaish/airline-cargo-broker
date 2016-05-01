@@ -1,5 +1,9 @@
 class UserMailer < ApplicationMailer
 	default :from => 'admin@cargo.com'
+  def new_message(message, to)
+    @message = message
+    mail(:subject => "Feedback", :to => to)
+  end
 	def send_signup_email(user)
     @user = user
     mail( :to => @user.email,

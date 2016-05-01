@@ -1,0 +1,77 @@
+<%= stylesheet_link_tag '/assets/contact' %>
+<%= stylesheet_link_tag '/assets/shared/contact_us_validation' %>
+<div class="login_modal">
+  <div id="login_form" >
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="create_area">
+          <div class="header text-center">
+            <h2>Contact Us</h2>
+            <p></p>
+          </div>
+          <div id="_sent_ok_" class="alert alert-success fade in fsize16 hide">
+            <button type="button" class="close"  aria-hidden="true">&times;</button>
+            <strong>Thank You!</strong> Your message successfully sent!
+          </div>
+          <%= form_for @message, :url => "/contact-us", :html => { :id => "contact_us" }  do |f| %>
+            <div class="row">
+              <div class="form-group">
+                <div class="col-md-4">
+                   <%= f.label :name,"Full Name *" %>
+                <%= f.text_field :name,:class=>'form-control contact-field',:required=>true %>
+                </div>
+                <div class="col-md-4">
+                   <%= f.label :email,"Email Address *" %>
+                <%= f.text_field :email, :required => true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}',:class=>'form-control contact-field',:placeholder=>"john@gmail.com" %>
+                </div>
+                <div class="col-md-4">
+                    <%= f.label :phone %>
+                <%= f.text_field :phone ,:class=>'form-control contact-field'%>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <div class="col-md-12">
+                    <%= f.label :subject,"Subject *" %>
+                <%= f.text_field :subject ,:class=>'form-control',:style=>"width: 100%;",:required=>true%>
+                </div>
+              </div>
+            </div>
+            <div class="row text_area">
+              <div class="form-group">
+                <div class="col-md-12">
+                <%= f.label :body,"Message *" %>
+                 <%= f.text_area :body,:class => 'form-control col-md-12', :maxlength=>"500",:required=>true,:rows=>6 %>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12">
+                <span class="pull-right"><!-- captcha -->
+                  
+                  
+                </span>
+
+                <%= f.submit "Send",  :class=>"form_send hover btn btn-primary btn-lg send_btn",:style=>"" %>
+                <%#= f.submit,'Send',  :class=>"btn btn-primary btn-lg" %>
+              </div>
+            </div>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#contact_us').submit(function(){
+      window.location.reload(true);
+      $('.alert-success').removeClass('hide');
+      setTimeout(function() {
+      $('.alert-success').hide();
+      }, 3000);
+    })
+  });
+  </script>
