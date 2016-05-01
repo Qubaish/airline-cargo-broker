@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
 
   match "/sign_up_as_airplan" => "users#sign_up_as_airplan", :via => [:get, :post]
-
+  get '/contact-us'  ,       :to => 'contacts#new'
+  post '/contact-us'  ,       :to => 'contacts#create'
   get 'broker_board' => 'dashboard#broker_board'
   get 'demo' => 'dashboard#demo'
   get 'airplane_board' => 'dashboard#airplane_board'

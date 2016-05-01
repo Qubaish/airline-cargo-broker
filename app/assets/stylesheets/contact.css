@@ -1,0 +1,67 @@
+:invalid {
+    box-shadow: none;
+ }
+
+:-moz-submit-invalid {
+  box-shadow: none;
+}
+
+:-moz-ui-invalid {
+  box-shadow:none;
+}
+.col-md-4 .form-control > input[type='text'] > input[type='email'] > select > textarea {
+font-style: italic;
+width: 100%;
+border-radius: 6px;
+border: solid 1px #dedede;
+}
+
+
+.radius3 {
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+}
+.fullwidth {
+width: 100% !important;
+}
+
+
+.contact_name input, textarea {
+border: solid 1px #dedede !important;
+width: 100% !important;
+}
+
+#contact{margin-top: 4%;}
+ @media only screen and (max-width: 767px) and (min-width: 480px){
+  input[type='text'], input[type='email'], select, textarea {
+    font-style: italic;
+    width: 100%;
+  }
+  .container {
+    width: 100% !important;
+  }
+  .contact_name textarea {
+    width: 100% !important;
+  }
+}
+ @media only screen and (max-width: 767px) and (min-width: 330px){
+  input[type='text'], input[type='email'], select, textarea {
+    font-style: italic;
+    width: 100%;
+  }
+  .container {
+    width: 100% !important;
+  }
+  .contact_name textarea {
+    width: 100% !important;
+  }
+}
+.send_btn{
+	margin-bottom: 6px;
+  width: 200px;
+  height: 51px;
+  padding: 12px 32px;
+  border-radius: 11px !important;
+  border: none; font-size: 15px;
+}
