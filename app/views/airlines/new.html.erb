@@ -11,49 +11,60 @@
 		        <div class="row">
 		        	<%= ff.fields_for :users do |f| %>
 			          <div class="col-md-6">
-			            <div class="form-group">
-			                <div class="left-inner-addon">
-		                    <i class="fa fa-envelope"></i>
-		                    <%= f.text_field :email, :pattern=> "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$",class: "form-control",:required=> true,:placeholder=> "Company Email" %>
-			                </div>
+			          	<div class="col-md-12">
+				            <div class="form-group">
+				                <div class="left-inner-addon">
+			                    <i class="fa fa-envelope"></i>
+			                    <%= f.text_field :email, :pattern=> "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$",class: "form-control",:required=> true,:placeholder=> "Company Email" %>
+				                </div>
+				            </div>
 			            </div>
 			          </div>
 			          <div class="col-md-6">
-			            <div class="form-group">
+			          	<div class="col-md-12">
+			            	<div class="form-group">
 			                <div class="left-inner-addon">
 		                    <i class="fa fa-asterisk"></i>
 		                    <%= f.text_field :password, autofocus: true, autocomplete: "off",class: "form-control",:required=> true,:placeholder=> "Password",:type=>"password" %>
 			                </div>
+			            	</div>
 			            </div>
 			          </div>
 			        <%end%>
 			        <div class="clearfix"></div>
 		          <div class="col-md-6">
-		            <div class="form-group">
+		          <div class="col-md-12">
+		           	 	<div class="form-group">
 		                <div class="left-inner-addon">
 		                    <i class="fa fa-user"></i>
 		                    <%= ff.text_field :airline_name, class: "form-control", placeholder: "AirLine name" %>
 		                </div>
-		            </div>
+		           		 </div>
+		           	</div>
 		          </div>
 		          <div class="col-md-6">
-		            <div class="form-group">
+		          	<div class="col-md-12">
+		            	<div class="form-group">
 		                <div class="left-inner-addon">
 		                    <i class="fa fa-envelope"></i>
 		                    <%= ff.text_field :airline_address, class: "form-control", placeholder: "AirLine address" %>
 		                </div>
+		            	</div>
 		            </div>
 		          </div>
 		          <div class="clearfix"></div>
 		          <div class="col-md-6">
+		          	<div class="col-md-12">
 		            <div class="form-group select_box">
 		            <div class="input-group">
 		                <div class="input-group-addon"><i class="fa fa-bars"></i></div> 
 	                  <%= country_select("airline", "country", { include_blank: 'Select a country' },class: "form-control" ) %>
 		              </div>
 		            </div>
+		            </div>
 		          </div>
 		          <div class="col-md-6">
+		          <div class="col-md-12">
 		            <div class="form-group">
 		            <div class="left-inner-addon">
 		                <i class="fa fa-asterisk"></i>
@@ -61,8 +72,10 @@
 		            </div>
 		          </div>
 		          </div>
+		          </div>
 		          <div class="clearfix"></div>
 		          <div class="col-md-6">
+		          <div class="col-md-12">
 		            <div class="form-group">
 		            <div class="left-inner-addon">
 		                <i class="fa fa-asterisk"></i>
@@ -70,7 +83,9 @@
 		            </div>
 		          </div>
 		          </div>
+		          </div>
 		          <div class="col-md-6">
+		          <div class="col-md-12">
 		            <div class="form-group">
 		            <div class="left-inner-addon">
 		                <i class="fa fa-asterisk"></i>
@@ -78,13 +93,16 @@
 		            </div>
 		          </div>
 		          </div>
+		          </div>
 		          <div class="clearfix"></div>
 		          <div class="col-md-6">
+		          <div class="col-md-12">
 		            <div class="form-group">
 		            <div class="left-inner-addon">
 		                <i class="fa fa-asterisk"></i>
 		                <%= ff.text_field :contact_number,class: "form-control" ,placeholder: "Contact Number"%>
 		            </div>
+		          </div>
 		          </div>
 		          </div>
 <!-- 		          <div class="col-md-6">
@@ -95,28 +113,34 @@
 		            </div>
 		          </div> -->
 		          <div class="col-md-6">
-		            <div class="form-group">
+		          	<div class="col-md-12">
+		            	<div class="form-group">
 		                <div class="left-inner-addon">
 		                    <i class="fa fa-envelope"></i>
 		                    <%= ff.text_field :year_in_service, class: "form-control" ,placeholder: "Year in service" %>
 		                </div>
+		            	</div>
 		            </div>
 		          </div>
 		          <div class="clearfix"></div>
 		          <div class="col-md-6">
+		          <div class="col-md-12">
 		            <div class="form-group">
 		            	<div class="input-group">
 		                <div class="input-group-addon"><i class="fa fa-bars"></i></div> 
 		                <%= ff.text_field :iata_code, class: "form-control",placeholder:  "IATA Code" %>
 		              </div>
 		            </div>
+		            </div>
 		          </div>
 		          <div class="col-md-6">
+		          <div class="col-md-12">
 		            <div class="form-group">
 		            <div class="left-inner-addon">
 		                <i class="fa fa-asterisk"></i>
 		                <%= ff.text_field :caa_license, class: "form-control" ,placeholder: "CAA Licence"%>
 		            </div>
+		          </div>
 		          </div>
 		          </div>
 		          <div class="clearfix"></div>
