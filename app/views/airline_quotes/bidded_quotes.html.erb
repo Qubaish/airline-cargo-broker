@@ -26,8 +26,8 @@
                                         <td><%= index + 1%></td>
                                         <td><%= bid.user.try(:broker_profile).try(:contact_name)%></td>
                                         <td><%= bid.created_at.strftime("%B %d %Y") %></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td><%= bid.broker_quote.date_required ? bid.broker_quote.date_required.strftime("%B %d %Y") : '' %> </td>
+                                        <td><%= bid.broker_quote.from_airpot %> - <%= bid.broker_quote.to_airpot %></td>
                                         <td></td>
                                     </tr>
                                 <% end %>

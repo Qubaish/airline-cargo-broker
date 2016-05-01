@@ -16,12 +16,23 @@ class AirlineQuotesController < ApplicationController
   end
 
   def show
+    @existing_quotes = current_user.broker_quotes
+    @broker_quote = BrokerQuote.new
   end
 
   def user_bid
-    user = User.find(params["user"].to_i)
-    user.airline_quotes << AirlineQuote.find(params["quote"].to_i)
-    render :json => { :success => "success"}
+    if params[:broker_quote]
+      airline_quote_id = params[:broker_quote].delete :quote_id
+      broker_quote = BrokerQuote.new(broker_quote_params)
+      broker_quote.save
+      broker_quote.user = current_user
+      quote = AirlineQuote.find(airline_quote_id.to_i)
+      current_user.bids.create(airline_quote: quote, broker_quote_id: broker_quote.id)
+    else
+      quote = AirlineQuote.find(params["airline_quote_id"].to_i)
+      current_user.bids.create(airline_quote: quote, broker_quote_id: params[:broker_quote_id])
+    end
+    redirect_to :back
   end
 
   def bidded_quotes
@@ -38,6 +49,12 @@ class AirlineQuotesController < ApplicationController
     date = params["day"] + "-" + params["month"] + "-" + params["year"]
     params[:airline_quote][:date_required] = Date.parse(date)
     params.require(:airline_quote).permit(:from_airpot, :to_airpot, :date_required, :weight, :volume, :cargo_dimension_width, :cargo_dimension_height, :cargo_dimension_length, :quantiy, :user_id, :additional_information, :special_requirements)
+  end
+
+  def broker_quote_params
+    date = params["day"] + "-" + params["month"] + "-" + params["year"]
+    params[:broker_quote][:date_required] = Date.parse(date)
+    params.require(:broker_quote).permit(:from_airpot, :to_airpot, :date_required, :nature_of_cargo, :un_number, :payload, :volume, :cargo_dimension_width, :cargo_dimension_height, :cargo_dimension_length, :quantiy, :user_id, :name, :company_name, :email, :uan_number, :hear, :additional_information, :special_requirements)
   end
 
 end

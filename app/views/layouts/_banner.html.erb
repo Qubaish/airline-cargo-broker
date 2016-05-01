@@ -21,11 +21,9 @@
                            <%if current_user && current_user.has_role?(RoleConstant::ADMIN) %>
                               <li><a href="/airplane_board">Shipment Inquiries</a></li>
                               <li ><a href="/broker_board">Freight Inquiries </a></li>
-                           <% end %>
-                           <%if current_user && current_user.has_role?(RoleConstant::BROKER) %>
+                           <% elsif current_user && current_user.has_role?(RoleConstant::BROKER) %>
                               <li ><a href="/broker_board">Freight Inquiries </a></li>
-                           <% end %>
-                           <%if current_user && current_user.has_role?(RoleConstant::AIRLINE) %>
+                           <% elsif current_user && current_user.has_role?(RoleConstant::AIRLINE) %>
                               <li><a href="/airplane_board">Shipment Inquiries</a></li>
                            <% end %>
                            <li ><a href="/load-board">Load Board </a></li>

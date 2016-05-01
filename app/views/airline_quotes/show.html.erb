@@ -7,16 +7,37 @@
                 <div class="heading_area text-center dashboard-heading">
                       <h3>Airline Available Load</h3>
                   </div>
+
                   <div class="alert alert-success" style="display:none">
                       Thanks for your interest .. Email is generated to airline.
                   </div>
-
-                  <% if has_bid(current_user, @airline_quote) %>
+                <% if has_bid(current_user, @airline_quote) %>
                     You already bid to this airline
                   <% else %>
-                    <button type="button" id="bid" class="btn btn-info">Bid</button>
-                    <input type="hidden" id="user" value="<%= current_user.id%>">
-                    <input type="hidden" id="quote" value="<%= @airline_quote.id%>">
+                  <div class="col-md-12 clear20">
+                    <a class="btn btn-default" id="existing" role="button">Add Existing Load</a>
+                    <a class="btn btn-default" id="new" role="button">Create New Load</a>
+                  </div>
+
+                  <div class="create_area1 hide">
+                  <%= form_tag '/add-bid' do %>
+                      <div class="row">
+                       <div class="col-xs-12 col-sm-12 col-md-5">
+                        <%= select_tag "broker_quote_id", options_for_select(@existing_quotes.collect{ |u| ["#{u.from_airpot} - #{u.to_airpot}", u.id]}), {:class =>"form-control"} %>
+                         <%= hidden_field_tag "airline_quote_id", @airline_quote.id %>
+                        <div class="btn_area">
+                          <button class="btn btn-default" style="color: #fff;">BID</button>
+                        </div>
+                      </div>
+                    </div>
+                    <% end %>
+                  </div>
+
+                  <div class="create_area hide" style="margin-top: 110px">
+                  <%= form_for @broker_quote, url: '/add-bid' do |f| %>
+                   <%= render partial: "form", :locals => {:f => f, button: 'BID', airline_quote:  @airline_quote} %>
+                   <% end %>
+                 </div>
                   <% end %>
 
                 </div>
@@ -31,20 +52,38 @@
     var user = $("#user");
     var quote = $("#quote");
     var alert = $(".alert");
+    var existing = $("#existing");
+    var newForm = $("#new");
+    var createForm = $('.create_area');
+    var createFormE = $('.create_area1');
+
+    existing.click(function(){
+      createFormE.removeClass('hide');
+      createForm.addClass('hide');
+      existing.addClass('active-button');
+      newForm.removeClass('active-button');
+    });
+
+    newForm.click(function(){
+      createForm.removeClass('hide');
+      createFormE.addClass('hide');
+      existing.removeClass('active-button');
+      newForm.addClass('active-button');
+    });
 
 
-    function addBid(){
-      $.ajax({
-         type: "POST",
-         url: "/add-bid",
-         data : {user: user.val() , quote: quote.val()},
-         dataType: "json",
-         success: function (result) {
-          bid.hide();
-          alert.show();
-         }
-      });
-    }
+    // function addBid(){
+    //   $.ajax({
+    //      type: "POST",
+    //      url: "/add-bid",
+    //      data : {user: user.val() , quote: quote.val()},
+    //      dataType: "json",
+    //      success: function (result) {
+    //       bid.hide();
+    //       alert.show();
+    //      }
+    //   });
+    // }
 
     bid.click(function(e){
       e.preventDefault();

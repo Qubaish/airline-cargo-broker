@@ -1,5 +1,7 @@
 class BrokerQuote < ActiveRecord::Base
   belongs_to :user
+  has_many :bids
+
   include PgSearch
   pg_search_scope :search, :against => [:name, :date_required], :using => {
                     :tsearch => {:prefix => true}
